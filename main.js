@@ -33,6 +33,8 @@ Clear_btn.addEventListener('click', () => {
   Search_results.style.display = "none";
 });
 
+navigator.geolocation.getCurrentPosition(Get_Current_Position_Success_Handler, Get_Current_Position_Error_Handler);
+
 // Functions 
 
 function Loading_Spinner(spinner_mode) {
@@ -237,6 +239,34 @@ function Air_Pollution_Components_Updater(air_components) {
 
 };
 
+function Get_Current_Position_Success_Handler(success) {
+  const latitude = success.coords.latitude;
+  const longitude = success.coords.longitude;
+  const weather_full_location = document.querySelector('.weather_full_location');
+  const full_location = `${latitude.toFixed(2)}:${longitude.toFixed(2)}`;
+  weather_full_location.innerHTML = '<ion-icon name="location-outline"></ion-icon>' + full_location;
+  Master_API_Caller_Func(latitude, longitude);
+}
+
+function Get_Current_Position_Error_Handler(error) {
+  let errorMessage;
+  switch (error.code) {
+    case error.PERMISSION_DENIED:
+      errorMessage = "User denied the request for Geolocation.";
+      break;
+    case error.POSITION_UNAVAILABLE:
+      errorMessage = "Location information is unavailable.";
+      break;
+    case error.TIMEOUT:
+      errorMessage = "The request to get the user's location timed out.";
+      break;
+    default:
+      errorMessage = "An unknown error occurred.";
+      break;
+  };
+  window.confirm(`Sorry, ${errorMessage} Please try again.`);
+}
+
 // Openweathermap API Functions
 
 function Master_API_Caller_Func(latitude, longitude) {
@@ -375,7 +405,6 @@ function Atmosphere_Layout_Builder(build) {
 };
 
 function Forecast_Layout_Builder(build) {
-  console.log(build)
   build.list.forEach((card, index) => {
     const card_element = document.getElementById(`mini_forecast_card_${index + 1}`);
     const card_icon = document.getElementById(`card_icon_${index + 1}`);
@@ -386,4 +415,10 @@ function Forecast_Layout_Builder(build) {
     card_icon.src = Icon_Selector(card.weather[0].description);
     card_description.innerText = card.weather[0].main;
   });
+};
+
+// Initiate Evil Mission 
+
+window.onload = () => {
+
 };
