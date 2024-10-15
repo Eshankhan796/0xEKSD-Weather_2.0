@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head START -->
+
+<head>
+  <!-- Meta Data START -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=7">
+  <meta name="title" content="0xEKSD - Weather 2.0" />
+  <title>0xEKSD - Weather 2.0</title>
+  <!-- Meta Data END -->
+
+  <!-- Stylesheet START -->
+  <link rel="stylesheet" href="/style.css">
+  <!-- Stylesheet END -->
+
+  <!-- Google Font Link START -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Sankofa+Display&display=swap" rel="stylesheet">
+  <!-- Google Font Link END -->
+</head>
+<!-- Head END -->
+<!-- Body START -->
+
+<body>
+  <!-- Main START -->
+  <main>
+    <!-- Weather -->
+    <div class="weather_card">
+      <!-- Search Container START -->
+      <div class="search_container">
+        <!-- Search START -->
+        <div class="search">
+          <ion-icon name="location"></ion-icon>
+          <input type="search" id="search_elm" placeholder="Search City">
+          <ion-icon name="close"></ion-icon>
+        </div>
+        <!-- Search END -->
+        <!-- Search Results START -->
+        <div class="search_results"></div>
+        <!-- Search Results END -->
+      </div>
+      <!-- Search Container END -->
+      <!-- Temperature START -->
+      <p class="weather_full_location"></p>
+      <img class="weather_icon">
+      <p class="weather_description"></p>
+      <div class="weather_temperature">
+        <p class="weather_temperature_in_c"></p>
+        <p class="weather_temperature_in_f"></p>
+      </div>
+      <p class="weather_date_n_utc"></p>
+      <!-- Temperature END -->
+    </div>
+    <!-- Air -->
+    <div class="air_card">
+      <!-- Air Card Header START -->
+      <div class="air_card_header">
+        <h2>Air Condition</h2>
+        <span class="air_quality">Unknown</span>
+      </div>
+      <!-- Air Card Header END -->
+      <!-- Air Pollutions START -->
+      <img src="/assets/icons/27.png">
+      <!-- Air Components START -->
+      <ul class="air_pollutions">
+        <li><span id="co">00</span>
+          <p>Carbon Monoxide</p>
+        </li>
+        <li><span id="no2">00</span>
+          <p>Nitrogen Dioxide</p>
+        </li>
+        <li><span id="no">00</span>
+          <p>Nitrogen Monoxide</p>
+        </li>
+        <li><span id="so2">00</span>
+          <p>Sulphur Dioxide</p>
+        </li>
+        <li><span id="nh3">00</span>
+          <p>Ammonia</p>
+        </li>
+        <li><span id="o3">00</span>
+          <p>Ozone</p>
+        </li>
+      </ul>
+      <!-- Air Components END -->
+      <div class="air_pollution_indicator_color_palette">
+        <div class="color_block_container">
+          <div class="color_block" style="background-color: #42445A;"></div>
+          <p>No Data</p>
+        </div>
+        <div class="color_block_container">
+          <div class="color_block" style="background-color: #28a745;"></div>
+          <p>Good</p>
+        </div>
+        <div class="color_block_container">
+          <div class="color_block" style="background-color: #f7d038;"></div>
+          <p>Fair</p>
+        </div>
+        <div class="color_block_container">
+          <div class="color_block" style="background-color: #f89c1c;"></div>
+          <p>Moderate</p>
+        </div>
+        <div class="color_block_container">
+          <div class="color_block" style="background-color: #dc3545;"></div>
+          <p>Poor</p>
+        </div>
+        <div class="color_block_container">
+          <div class="color_block" style="background-color: #7d1d3f;"></div>
+          <p>Very Poor</p>
+        </div>
+      </div>
+      <!-- Air Pollutions END -->
+    </div>
+    <!-- Atmosphere -->
+    <div class="atmosphere_card">
+      <!-- Atmosphere Card Header START -->
+      <h2 style="border-bottom: 2px solid #2C2C2C; padding-bottom: 10px;">Atmosphere</h2>
+      <!-- Atmosphere Card Header END -->
+      <ul class="atmosphere_list">
+        <li>
+          <div class="atmosphere_list_icon_container"><ion-icon name="water"></ion-icon>
+            <p>Humidity</p>
+          </div>
+          <p id="humidity">0<span>%</span></p>
+        </li>
+        <li>
+          <div class="atmosphere_list_icon_container"><ion-icon name="eye-off"></ion-icon>
+            <p>Visibility</p>
+          </div>
+          <p id="visibility">0<span>km</span></p>
+        </li>
+        <li>
+          <div class="atmosphere_list_icon_container"><ion-icon name="cloud"></ion-icon>
+            <p>Cloudiness</p>
+          </div>
+          <p id="cloudiness">0<span>%</span></p>
+        </li>
+        <li>
+          <div class="atmosphere_list_icon_container"><ion-icon name="leaf"></ion-icon>
+            <p>Wind Speed</p>
+          </div>
+          <p id="wind_speed">0<span>Miles/h</span></p>
+        </li>
+        <li>
+          <div class="atmosphere_list_icon_container"><ion-icon name="thermometer"></ion-icon>
+            <p>Max Temp</p>
+          </div>
+          <p id="max_temp">0<span>°C</span></p>
+        </li>
+        <li>
+          <div class="atmosphere_list_icon_container"><ion-icon name="thermometer"></ion-icon>
+            <p>Min Temp</p>
+          </div>
+          <p id="min_temp">0<span>°C</span></p>
+        </li>
+      </ul>
+    </div>
+    <!-- Sun -->
+    <div class="sun_card">
+      <!-- Sun Card Header START -->
+      <h2 style="border-bottom: 2px solid #2C2C2C; padding-bottom: 10px;">Sunset and Sunrise</h2>
+      <!-- Sun Card Header END -->
+      <div class="sunset_n_sunrise_main_container">
+        <div class="sunset_box">
+          <img src="/assets/icons/26.png">
+          <p></p>
+        </div>
+        <div class="sunrise_box">
+          <img src="/assets/icons/25.png">
+          <p></p>
+        </div>
+      </div>
+    </div>
+    <!-- Forecast -->
+    <div class="forecast_card">
+      <h2 style="border-bottom: 2px solid #2C2C2C; padding-bottom: 10px;">Forecast</h2>
+      <ul class="forecast_list">
+        <li id="mini_forecast_card_1" class="mini_forecast_card">
+          <p>12:00 PM</p>
+          <img id="card_icon_1" src="/assets/icons/24.png">
+          <p id="card_description_1"></p>
+          <p id="card_temperature_1" class="card_temperature">~</p>
+        </li>
+        <li id="mini_forecast_card_2" class="mini_forecast_card">
+          <p>3:00 PM</p>
+          <img id="card_icon_2" src="/assets/icons/24.png">
+          <p id="card_description_2"></p>
+          <p id="card_temperature_2" class="card_temperature">~</p>
+        </li>
+        <li id="mini_forecast_card_3" class="mini_forecast_card">
+          <p>6:00 PM</p>
+          <img id="card_icon_3" src="/assets/icons/24.png">
+          <p id="card_description_3"></p>
+          <p id="card_temperature_3" class="card_temperature">~</p>
+        </li>
+        <li id="mini_forecast_card_4" class="mini_forecast_card">
+          <p>9:00 PM</p>
+          <img id="card_icon_4" src="/assets/icons/24.png">
+          <p id="card_description_4"></p>
+          <p id="card_temperature_4" class="card_temperature">~</p>
+        </li>
+        <li id="mini_forecast_card_5" class="mini_forecast_card">
+          <p>12:00 AM</p>
+          <img id="card_icon_5" src="/assets/icons/24.png">
+          <p id="card_description_5"></p>
+          <p id="card_temperature_5" class="card_temperature">~</p>
+        </li>
+        <li id="mini_forecast_card_6" class="mini_forecast_card">
+          <p>3:00 AM</p>
+          <img id="card_icon_6" src="/assets/icons/24.png">
+          <p id="card_description_6"></p>
+          <p id="card_temperature_6" class="card_temperature">~</p>
+        </li>
+        <li id="mini_forecast_card_7" class="mini_forecast_card">
+          <p>6:00 AM</p>
+          <img id="card_icon_7" src="/assets/icons/24.png">
+          <p id="card_description_7"></p>
+          <p id="card_temperature_7" class="card_temperature">~</p>
+        </li>
+        <li id="mini_forecast_card_8" class="mini_forecast_card">
+          <p>9:00 AM</p>
+          <img id="card_icon_8" src="/assets/icons/24.png">
+          <p id="card_description_8"></p>
+          <p id="card_temperature_8" class="card_temperature">~</p>
+        </li>
+      </ul>
+    </div>
+  </main>
+  <!-- Main START -->
+
+  <!-- Footer START -->
+  <footer>
+    <div class="social_media_navigation_button">
+      <div style="background-color: #dc3545;"><a href="https://www.instagram.com/annoying.master_ek.797" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a></div>
+      <div style="background-color: #f7d038;"><a href="https://github.com/Eshankhan796/Eshankhan796" target="_blank"><ion-icon name="logo-github"></ion-icon></a></div>
+      <div style="background-color: #28a745;"><a href="https://x.com/eshankhan796" target="_blank"><ion-icon name="logo-twitter"></ion-icon></a></div>
+    </div>
+    <div class="glitch-wrapper">
+      <div class="glitch" data-glitch="0xEKSD">0xEKSD</div>
+    </div>
+    <div class="client_support">
+      <p style="padding-bottom: 8px; font-size: 8px;">This is just a fun<span style="color: transparent;">/evil</span> project</p>
+      <p style="margin: 5px 0; font-size: 12px;">Find an issue with this page? Fix it on <a class="magic_link" href="Github">Github</a></p>
+      <p style="margin: 5px 0; font-size: 12px;">Need help? Email <a class="magic_link" href="mailto:eksd796@proton.me" target="_top">eksd796@proton.me</a></p>
+    </div>
+    <div class="special_thanks">
+      <h5 style="padding: 10px 0;">Special Thanks To</h5>
+      <ul class="special_thanks_list">
+        <li class="divider"><a class="magic_link" href="https://openai.com/chatgpt/" target="_blank">ChatGPT</a></li>
+        <li class="divider"><a class="magic_link" href="https://openweathermap.org/" target="_blank">Openweathermap</a></li>
+        <li class="divider"><a class="magic_link" href="https://ionic.io/ionicons" target="_blank">Ion Icon</a></li>
+        <li class="divider"><a class="magic_link" href="https://spck.io/" target="_blank">Spck</a></li>
+        <li class="divider"><a class="magic_link" href="https://www.netlify.com/" target="_blank">Netlify</a></li>
+        <li class="divider"><a class="magic_link" href="https://developer.mozilla.org/en-US/" target="_blank">MDN Web Docs</a></li>
+        <li class="divider"><a class="magic_link" href="https://limewire.com/" target="_blank">LimeWire</a></li>
+        <li class="divider"><a class="magic_link" href="https://www.freepik.com/" target="_blank">Freepik</a></li>
+        <li class="divider"><a class="magic_link" href="https://10015.io/" target="_blank">10015.io</a></li>
+      </ul>
+    </div>
+    <div class="copyright">
+      <p style="margin-bottom: 10px; font-size: 12px;">Made with &#x2764; & &#x1F480; By <a class="magic_link" href="https://www.facebook.com/siddek.ek.796" target="_blank">Eshan Khan</a>, Team <span class="magic_link">0xEKSD</span></p>
+      <p style="font-size: 11px;">&copy; All Rights Are Resolved 2024.</p>
+    </div>
+  </footer>
+  <!-- Footer END -->
+
+  <!-- Script START -->
+
+  <!-- Ion-Icon Script START -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <!-- Ion-Icon Script END -->
+
+  <!-- Axios Script START -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!-- Axios Script END -->
+
+  <!-- Custom Script START -->
+  <script src="/main.js"></script>
+  <!-- Custom Script END -->
+  <!-- Script END -->
+</body>
+<!-- Body END -->
+
+</html>
