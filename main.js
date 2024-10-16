@@ -1,6 +1,6 @@
 // Variable
 
-const KEY = process.env.API_KEY;
+const KEY = '1ed9793ac6b22f2d6b01ae45214af84e';
 const Search_elm = document.getElementById('search_elm');
 const Clear_btn = document.querySelector('ion-icon[name="close"]')
 const Search_results = document.querySelector('.search_results');
