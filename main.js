@@ -276,7 +276,7 @@ function Master_API_Caller_Func(latitude, longitude) {
 };
 
 function Geocode_API_Func(search_input_value) {
-  axios.get('http://api.openweathermap.org/geo/1.0/direct', {
+  axios.get('https://api.openweathermap.org/geo/1.0/direct', {
       params: {
         q: search_input_value,
         limit: 5,
@@ -307,7 +307,7 @@ function Current_Weather_API_Func(latitude, longitude) {
 };
 
 function Air_Pollution_API_Func(latitude, longitude) {
-  axios.get('http://api.openweathermap.org/data/2.5/air_pollution', {
+  axios.get('https://api.openweathermap.org/data/2.5/air_pollution', {
       params: {
         lat: latitude,
         lon: longitude,
